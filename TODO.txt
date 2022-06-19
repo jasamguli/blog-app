@@ -1,0 +1,48 @@
+-- BLOG POST --
+Materijali:
+Html tema - https://startbootstrap.com/theme/clean-blog
+Admin tema - https://github.com/ColorlibHQ/AdminLTE/releases OPCIONO
+Tiny MCE - https://www.tiny.cloud/ - text editor
+
+Tabele:
+user - id, name, email, picture, about, admin (yes / no)
+post - id, title, slug, short_description, content, picture, user_id, published_at
+
+Kreirati public dio sajta koji se sastoji od 4 strane (stavke menija):
+Homepage - umjesto logotipa unijeti svoje ime i prezime. Umjesto glavnog naslova napisati pozdravnu poruku (Dobrodošli na moj personalni sajt / Ćao ja sam Marko Marković). Izlistati nekoliko poslednjih blog postova (objava) i dodati dugme "Vidi sve". U footeru dodati linkove do github naloga i nekih društvenih mreža (koristiti _blank opciju za linkove).
+About - stranica na kojoj ćete prikazati vaše podatke (slika i tekst iz kolone "about").
+Blog - stranica na kojoj će se izlistati blogovi (po 4 blogposta po strani) uz obaveznu paginaciju. Svaka objava sadrži title, short_description, picture, user.name i link do jedinstvene stranice sa cijelim sadržajem.
+Contact - stranica sa kontakt formom - popunjena kontakt forma se preko Mailgun-a šalje na mejl učenika
+
+Admin strana - privatne stranice (detaljnije tokom sesije):
+Klasična administracija - login bez registracije (registraciju zabraniti). Ulogovani korisnik može da vrši operacije nad objavama (postovima).
+
+1. Download Html teme i kreiranje statičkih strana od same teme.
+2. Kreiranje laravel autentikacije (login/register forma)
+3. Kreiranje DB sa zadatim tabelama - odnosno kreiranje user i post tabele
+4. CRUD za post - korisnik može da kreira/edituje/briše postove. U okviru ove sekcije obratiti pažnju na tiny mce editor.
+5. Dinamičko iscrtavanje sadržaja na public sajtu
+6. Kontakt strana - slanje mejla preko Mailgun servisa (email treba da ima html template)
+7. Publish sajta na remote server - objavljivanje sajta globalno
+*** Kreirati Google frendly strane koriscenjem slug-a (aliasa) - na primjer umjesto sajt.com/post/1 moze se napisati sajt.com/post/man-must-explore-and-this-is-exploration-at-its-greatest
+*** Factory za postove kako bi imali više sadržaja
+
+
+# Post seeder
+# Home stranica
+# Blog stranica
+# Admin stranica (CRUD postova, generisanje slug-a od naslova)
+# Prikazivanje slug-a u posaljes slug umjesto id findbyid replace with where slug
+Slug system (PostController)
+published_at - check if < current time
+Upload slika
+
+Tiny MCE
+# Contact page i Mailtrap
+# About page
+#Footer links
+Search posts
+Publish
+
+
+Tags (AdminLTE Select2 multiselect)
