@@ -13,15 +13,16 @@ class PostController extends Controller
     public function index(Request $request)
     {
         if ($request['param'] == 'admin') {
-            if (!auth()->user()->admin)
+            if (!auth()->user()->admin) {
                 return back();
+            }
 
             $posts = Post::all()->sortByDesc('published_at');
-            return view('admin.index', ['posts' => $posts]);
+            return view('admin.index', compact('posts'));
         }
 
         $posts = Post::all()->where('user_id', auth()->user()->id)->sortByDesc('published_at');
-        return view('admin.index', ['posts' => $posts]);
+        return view('admin.index',compact('posts'));
     }
 
     public function create()
@@ -48,24 +49,28 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        if (auth()->user()->admin)
-            return view("admin.showPost", compact('post'));
+        if (auth()->user()->admin) {
+            return view('dmin.showPost', compact('post'));
+        }
 
-        if ($post->user != auth()->user())
+        if ($post->user != auth()->user()) {
             return back();
+        }
 
-        return view("admin.showPost", compact('post'));
+        return view('admin.showPost', compact('post'));
     }
 
     public function edit(Post $post)
     {
-        if (auth()->user()->admin)
-            return view("admin.editPost", compact('post'));
+        if (auth()->user()->admin) {
+            return view('admin.editPost', compact('post'));
+        }
 
-        if ($post->user != auth()->user())
+        if ($post->user != auth()->user()) {
             return back();
+        }
 
-        return view("admin.editPost", compact('post'));
+        return view('admin.editPost', compact('post'));
     }
 
     public function update(UpdatePostRequest $request, Post $post)
@@ -97,8 +102,9 @@ class PostController extends Controller
             return redirect('admin');
         }
 
-        if ($post->user != auth()->user())
+        if ($post->user != auth()->user()) {
             return back();
+        }
 
         $post->delete();
         return redirect('admin');

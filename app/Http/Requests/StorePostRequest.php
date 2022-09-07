@@ -18,7 +18,8 @@ class StorePostRequest extends FormRequest
             'title' => 'required',
             'short_description' => 'required',
             'description' => 'required',
-            'published_at' => 'sometimes'
+            'published_at' => 'sometimes',
+            'picture' => 'sometimes'
         ];
     }
 }

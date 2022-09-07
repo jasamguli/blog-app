@@ -1,11 +1,7 @@
-<h1>
-    You've got a message.
-</h1>
+<h2>Hey! You've got an email from <i>{{ getenv('APP_NAME') }}</i></h2>
 
-<h3>Name: {{ $request['name'] }}</h3>
-<h3>Email: {{ $request['email'] }}</h3>
-<h3>Phone: {{ $request['phone'] }}</h3>
-<h3>Message:</h3>
-<p>
-    {{ $request['message'] }}
-</p>
+This is your form data:
+<h5>Name: {{ $request['name'] }}</h5>
+<h5>Email: {{ $request['email'] }}</h5>
+<h5>Phone: {{ $request['phone'] }}</h5>
+<h5>Message: {{ $request['message'] }}</h5>

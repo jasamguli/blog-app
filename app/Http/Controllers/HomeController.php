@@ -6,10 +6,6 @@ use App\Models\Post;
 
 class HomeController extends Controller
 {
-    public function __construct()
-    {
-//        $this->middleware('auth'); hahahahah
-    }
 
     public function index()
     {
@@ -17,14 +13,9 @@ class HomeController extends Controller
             ->sortBy('created_at')
             ->where('published_at', '<=', now())
             ->take(5);
+
         return view('master.home', compact('posts'));
     }
-
-
-//    public function about()
-//    {
-//        return view('master.about', ['user' => auth()->user()]);
-//    }
 
     public function contact()
     {
@@ -34,7 +25,7 @@ class HomeController extends Controller
     public function post($slug)
     {
         $post = Post::query()->where('slug', $slug)->first();
-        return view('master.post', ['post' => $post]);
+        return view('master.post', compact('post'));
     }
 
     public function blog()
@@ -42,6 +33,7 @@ class HomeController extends Controller
         $posts = Post::orderBy('published_at', 'desc')
             ->where('published_at', '<=', now())
             ->paginate(6);
-        return view('master.blog', ['posts' => $posts]);
+
+        return view('master.blog', compact('posts'));
     }
 }

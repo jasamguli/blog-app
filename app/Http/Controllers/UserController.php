@@ -10,11 +10,12 @@ class UserController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->admin)
+        if (!auth()->user()->admin) {
             return back();
+        }
 
-        $users = User::all();//->where('id', '!=', auth()->user()->id);
-        return view('admin.users', ['users' => $users]);
+        $users = User::all();
+        return view('admin.users', compact('users'));
     }
 
     public function myProfile()
@@ -24,15 +25,18 @@ class UserController extends Controller
 
     public function destroyUser(User $user)
     {
-        if ($user == auth()->user())
+        if ($user === auth()->user()) {
             return back();
+        }
 
-        if (!auth()->user()->admin)
+        if (!auth()->user()->admin) {
             return back();
+        }
 
         $posts = $user->posts;
-        foreach ($posts as $post)
-            $post->update(["user_id" => auth()->id()]);
+        foreach ($posts as $post) {
+            $post->update(['user_id' => auth()->id()]);
+        }
 
         $user->delete();
         return back();

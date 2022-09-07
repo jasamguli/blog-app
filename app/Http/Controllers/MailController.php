@@ -10,7 +10,7 @@ class MailController extends Controller
 {
     public function sendEmail(Request $request)
     {
-        Mail::to("nikolalondrovic41@gmail.com")->send(new SendMessage($request));
+        Mail::to('nikolalondrovic41@gmail.com')->send(new SendMessage($request));
 
         return view('master.contact');
     }
