@@ -50,7 +50,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         if (auth()->user()->admin) {
-            return view('dmin.showPost', compact('post'));
+            return view('admin.showPost', compact('post'));
         }
 
         if ($post->user != auth()->user()) {
